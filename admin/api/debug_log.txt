@@ -1,0 +1,73 @@
+[2026-08-26 13:53:49] submit_inquiry execution. Raw input: {"name":"Diagnostic Bot","email":"debug@rabss.tech","company":"RABSS Debug OS","country":"USA","project_type":"AI Agent / LLM Automation","budget":"$5,000 – $10,000 USD","description":"Automated diagnostic submission generated from the inquiries panel."} | POST: []
+[2026-08-26 13:53:49] SUCCESS: Record inserted with ID 1.
+[2026-08-26 14:25:07] submit_inquiry execution. Raw input: {"name":"subash sitaula","email":"ssitaula3@gmail.com","company":"11235678","country":"USA","project_type":"AI Agent / LLM Automation","budget":"$1,500 – $3,000 USD","description":"njnj"} | POST: []
+[2026-08-26 14:25:07] SUCCESS: Record inserted with ID 2.
+[2026-08-27 11:31:58] PHP WARNING/NOTICE: failed loading cafile stream: `C:\laragon\bin\php\php-8.x.x-nts-Win32-vs16-x64\extras\ssl\cacert.pem' in C:\Users\ssita\rabss-technologies\admin\api\automation_engine.php on line 28
+[2026-08-27 11:31:58] PHP WARNING/NOTICE: fsockopen(): Failed to enable crypto in C:\Users\ssita\rabss-technologies\admin\api\automation_engine.php on line 28
+[2026-08-27 11:31:58] PHP WARNING/NOTICE: fsockopen(): Unable to connect to ssl://smtp.gmail.com:465 (Unknown error) in C:\Users\ssita\rabss-technologies\admin\api\automation_engine.php on line 28
+[2026-08-27 11:32:01] Transactional Email Log (To: ssitaula3@gmail.com, Subject: Let's connect — RABSS Technologies)
+SMTP Status: Failed (Could not connect to SMTP host smtp.gmail.com on port 465:  (0))
+Mail Fallback: Sent
+Body:
+Hi subash sitaula,
+
+I hope you are doing well!
+
+We have processed your inquiry for 11235678 regarding AI Agent / LLM Automation, and we'd love to set up a quick introduction call to discuss your goals in more detail.
+
+Please let us know your availability, or feel free to reply directly to this email or message us on WhatsApp.
+
+Best regards,
+Subash Sitaula
+Founder & CEO, RABSS Technologies
+rabsstechnologies@gmail.com
+-----------------------
+[2026-08-27 11:37:40] Transactional Email Log (To: subashsitaula178@gmail.com, Subject: Let's connect — RABSS Technologies)
+SMTP Status: Success
+Mail Fallback: N/A / Failed
+Body:
+Hi Alex Morgan,
+
+I hope you are doing well!
+
+We have processed your inquiry for Hr System regarding SaaS Platform Development, and we'd love to set up a quick introduction call to discuss your goals in more detail.
+
+Please let us know your availability, or feel free to reply directly to this email or message us on WhatsApp.
+
+Best regards,
+Subash Sitaula
+Founder & CEO, RABSS Technologies
+rabsstechnologies@gmail.com
+-----------------------
+[2026-08-27 11:38:33] Transactional Email Log (To: ssitaula3@gmail.com, Subject: Lead Stage Updated: New Inquiry — RABSS Technologies)
+SMTP Status: Success
+Mail Fallback: N/A / Failed
+Body:
+Hi subash sitaula,
+
+This is an automated update that your opportunity for AI Agent / LLM Automation has transitioned to the stage: New Inquiry.
+
+We'll be in touch with further updates regarding our operational roadmap.
+
+Best regards,
+Subash Sitaula
+Founder & CEO, RABSS Technologies
+rabsstechnologies@gmail.com
+-----------------------
+[2026-08-27 11:39:58] Transactional Email Log (To: subashsitaula178@gmail.com, Subject: Technical Discovery Call Follow-up — RABSS Technologies)
+SMTP Status: Success
+Mail Fallback: N/A / Failed
+Body:
+Hi Alex Morgan,
+
+It was great speaking with you/initiating our technical discovery process!
+
+We are currently analyzing your requirements for the custom SaaS Platform Development build. We'll outline the architectural blueprint, timeline, and exact milestones next.
+
+Let us know if you have any additional notes to append.
+
+Best regards,
+Subash Sitaula
+Founder & CEO, RABSS Technologies
+rabsstechnologies@gmail.com
+-----------------------

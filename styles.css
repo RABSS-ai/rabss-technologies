@@ -1,0 +1,150 @@
+/* ==========================================================================
+   RABSS TECHNOLOGIES - DESIGN SYSTEM & MODERN DARK THEME
+   ========================================================================== */
+
+:root {
+  --bg-dark: #080B11;
+  --bg-surface: #0E131F;
+  --bg-card: rgba(15, 23, 42, 0.65);
+  
+  --color-primary: #6366F1; /* Indigo */
+  --color-accent: #06B6D4;  /* Electric Cyan */
+  --color-violet: #8B5CF6;  /* Violet */
+  --color-emerald: #10B981; /* Emerald */
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.4);
+
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #F1F5F9;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.6;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080B11;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Glassmorphism & Micro Cards */
+.service-card, .concept-card {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background-color: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.service-card:hover, .concept-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(99, 102, 241, 0.4);
+  background-color: rgba(15, 23, 42, 0.75);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(99, 102, 241, 0.15);
+}
+
+/* AI Step Active Animation */
+.ai-step.active {
+  border-color: rgba(6, 182, 212, 0.8) !important;
+  background-color: rgba(6, 182, 212, 0.08) !important;
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+}
+
+.ai-step.active .status-badge {
+  background-color: rgba(6, 182, 212, 0.2) !important;
+  color: #67E8F9 !important;
+}
+
+/* Navbar blur state on scroll */
+#navbar.scrolled nav {
+  background-color: rgba(8, 11, 17, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Premium interactive inputs & forms */
+input, select, textarea {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+input:focus, select:focus, textarea:focus {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.6) !important;
+  background-color: rgba(15, 23, 42, 0.9) !important;
+}
+
+/* Real-time bar graph animation */
+@keyframes dynamicBar {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.7); }
+}
+.hero-view-panel .flex-1 {
+  transform-origin: bottom;
+  animation: dynamicBar 3s infinite ease-in-out;
+}
+.hero-view-panel .flex-1:nth-child(2n) { animation-delay: 0.5s; animation-duration: 2.5s; }
+.hero-view-panel .flex-1:nth-child(3n) { animation-delay: 1.0s; animation-duration: 3.5s; }
+.hero-view-panel .flex-1:nth-child(4n) { animation-delay: 1.5s; animation-duration: 2.8s; }
+
+/* Custom Scrollbar for FAQ Chat window */
+#faq-chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+#faq-chat-messages::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 2px;
+}
+#faq-chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Smooth panel scale translation */
+#faq-chat-panel {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
