@@ -445,6 +445,78 @@ if ($action === 'get_clients') {
     respond(['status' => 'success', 'clients' => $clients]);
 }
 
+// 7.5 MEETINGS & SCHEDULING
+if ($action === 'get_meetings') {
+    $meetings = $pdo->query("SELECT * FROM meetings ORDER BY id DESC")->fetchAll();
+    respond(['status' => 'success', 'meetings' => $meetings]);
+}
+
+if ($action === 'schedule_meeting' && $method === 'POST') {
+    $title = trim($input['title'] ?? '');
+    $invitee_name = trim($input['invitee_name'] ?? '');
+    $invitee_email = trim($input['invitee_email'] ?? '');
+    $scheduled_at = trim($input['scheduled_at'] ?? '');
+
+    if (!$title || !$invitee_name || !$invitee_email || !$scheduled_at) {
+        respond(['status' => 'error', 'message' => 'All fields are required.'], 400);
+    }
+
+    try {
+        $roomId = 'room_' . bin2hex(random_bytes(6));
+
+        $stmt = $pdo->prepare("
+            INSERT INTO meetings (room_id, title, invitee_name, invitee_email, scheduled_at)
+            VALUES (?, ?, ?, ?, ?)
+        ");
+        $stmt->execute([$roomId, $title, $invitee_name, $invitee_email, $scheduled_at]);
+        $meetingId = $pdo->lastInsertId();
+
+        logAudit($pdo, $_SESSION['user_name'] ?? 'Admin', "Scheduled meeting '{$title}' with {$invitee_name}", 'Meeting', $meetingId);
+
+        // Generate absolute meeting link
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+        $host = $_SERVER['HTTP_HOST'];
+        $baseDir = str_replace('/api/index.php', '', $_SERVER['SCRIPT_NAME']);
+        $meetingLink = "{$protocol}://{$host}{$baseDir}/meeting.php?room={$roomId}";
+
+        // Send invitation email
+        $subject = "Video Meeting Invitation: {$title} — RABSS Technologies";
+        $body = "Hi {$invitee_name},\n\n";
+        $body .= "You have been invited to a secure video meeting with RABSS Technologies.\n\n";
+        $body .= "Meeting Title: {$title}\n";
+        $body .= "Scheduled Time: {$scheduled_at}\n\n";
+        $body .= "To join the meeting room directly, please click the secure link below:\n";
+        $body .= "{$meetingLink}\n\n";
+        $body .= "Best regards,\nSubash Sitaula\nFounder & CEO, RABSS Technologies\nrabsstechnologies@gmail.com";
+
+        $emailSent = false;
+        $smtpErr = '';
+
+        if (file_exists(__DIR__ . '/automation_engine.php')) {
+            require_once __DIR__ . '/automation_engine.php';
+            try {
+                $emailSent = sendSmtpEmail($invitee_email, $subject, $body);
+            } catch (\Exception $ex) {
+                $smtpErr = $ex->getMessage();
+                // Fallback to standard php mail()
+                $headers = "From: rabsstechnologies@gmail.com\r\nReply-To: rabsstechnologies@gmail.com\r\nX-Mailer: PHP/" . PHP_VERSION;
+                $emailSent = @mail($invitee_email, $subject, $body, $headers);
+            }
+        }
+
+        respond([
+            'status' => 'success', 
+            'message' => 'Meeting scheduled and invitation sent successfully.',
+            'room_id' => $roomId,
+            'meeting_link' => $meetingLink,
+            'email_sent' => $emailSent,
+            'smtp_error' => $smtpErr
+        ]);
+    } catch (\Exception $e) {
+        respond(['status' => 'error', 'message' => 'Failed to schedule meeting: ' . $e->getMessage()], 500);
+    }
+}
+
 // 8. AUDIT LOGS
 if ($action === 'get_audit_logs') {
     $logs = $pdo->query("SELECT * FROM audit_logs ORDER BY id DESC LIMIT 50")->fetchAll();

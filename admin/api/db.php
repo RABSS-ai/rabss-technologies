@@ -174,6 +174,17 @@ try {
             ip_address TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         );
+
+        CREATE TABLE IF NOT EXISTS meetings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            room_id TEXT UNIQUE NOT NULL,
+            title TEXT NOT NULL,
+            invitee_name TEXT NOT NULL,
+            invitee_email TEXT NOT NULL,
+            scheduled_at DATETIME NOT NULL,
+            status TEXT DEFAULT 'Scheduled',
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
     ");
 
     // Seed default Super Admin if empty
