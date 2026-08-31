@@ -1,54 +1,24 @@
-name: Deploy RBSS Technologies
+name: Deploy RABSS Technologies
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
-concurrency:
-  group: production-deployment
-  cancel-in-progress: true
 
 jobs:
   deploy:
-    name: Deploy to VPS
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.2.5
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          host: ${{ secrets.vps_host }}
+          username: ${{ secrets.vps_user }}
+          key: ${{ secrets.vps_ssh_key }}
           script: |
-            set -e
-
             cd /var/www/rabss-technologies
-
-            echo "Starting deployment..."
-
             git fetch origin main
-
             git reset --hard origin/main
-
-            echo "Restoring production database permissions..."
-
-            if [ -f admin/api/rabss_os.sqlite ]; then
-              chown rabssadmin:www-data admin/api/rabss_os.sqlite
-              chmod 664 admin/api/rabss_os.sqlite
-            fi
-
-            echo "Restarting PHP..."
-
-            sudo systemctl restart php8.3-fpm
-
-            echo "Reloading Nginx..."
-
             sudo systemctl reload nginx
-
-            echo "Deployment completed successfully."
+            sudo systemctl restart php8.3-fpm
