@@ -147,8 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Header Brand -->
     <div class="text-center mb-8">
       <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-accent p-0.5 shadow-xl shadow-brand-500/30 mb-4">
-        <div class="w-full h-full bg-dark-950 rounded-[14px] flex items-center justify-center font-mono font-bold text-2xl text-white">
-          R
+        <div class="w-full h-full bg-dark-950 rounded-[14px] flex items-center justify-center overflow-hidden">
+          <img src="../logo.jpg" alt="RABSS Technologies Logo" class="w-full h-full object-cover rounded-[14px]">
         </div>
       </div>
       <h1 class="text-2xl font-extrabold text-white tracking-tight">RABSS TECHNOLOGIES</h1>
@@ -212,15 +212,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </div>
 
-        <!-- Remember Me & Quick Fill -->
+        <!-- Remember Me -->
         <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
           <label class="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" name="remember" class="rounded bg-dark-950 border-white/10 text-brand-600 focus:ring-0">
             <span>Remember device</span>
           </label>
-          <button type="button" id="btn-quick-fill" class="text-slate-400 hover:text-white font-mono text-[11px]">
-            ⚡ Default CEO Fill
-          </button>
         </div>
 
         <!-- Submit Button -->
@@ -264,12 +261,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         pwdInput.type = 'password';
         toggleBtn.textContent = 'Show';
       }
-    });
-
-    // Quick Fill Helper for Demo / Testing
-    document.getElementById('btn-quick-fill').addEventListener('click', () => {
-      document.getElementById('email').value = 'ceo@rabss.tech';
-      document.getElementById('password').value = 'Admin@RABSS2026';
     });
   </script>
 </body>
