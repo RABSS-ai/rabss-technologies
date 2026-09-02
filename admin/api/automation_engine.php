@@ -4,8 +4,8 @@
 // SMTP Configuration for transactional emails
 if (!defined('SMTP_HOST')) define('SMTP_HOST', 'smtp.gmail.com');
 if (!defined('SMTP_PORT')) define('SMTP_PORT', 465);
-if (!defined('SMTP_USER')) define('SMTP_USER', 'rabsstechnologies@gmail.com');
-if (!defined('SMTP_PASS')) define('SMTP_PASS', 'cxah rssc fxje nkxo'); // Set your Google App Password or SMTP credentials here
+if (!defined('SMTP_USER')) define('SMTP_USER', 'your_gmail_account@gmail.com'); // Use your actual Gmail account
+if (!defined('SMTP_PASS')) define('SMTP_PASS', 'YOUR_NEWLY_GENERATED_APP_PASSWORD'); // Set your Google App Password here
 if (!defined('SMTP_SECURE')) define('SMTP_SECURE', 'ssl'); // 'ssl', 'tls', or ''
 if (!defined('SMTP_FROM_NAME')) define('SMTP_FROM_NAME', 'RABSS Technologies');
 

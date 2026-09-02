@@ -424,7 +424,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">AI Development</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Build AI-powered applications, autonomous agents, document intelligence, and custom LLM workflows tailored to your business.
+                Build custom AI applications, AI agents, document intelligence systems, and LLM-powered workflows designed around your business processes.
               </p>
             </div>
             <div>
@@ -447,7 +447,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">Custom Software</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Bespoke enterprise applications and business operating systems engineered specifically around your internal operational workflows.
+                Build custom software and business applications tailored to your workflows, operations, integrations, and long-term growth.
               </p>
             </div>
             <div>
@@ -470,7 +470,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">SaaS Development</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Turn your software idea into a multi-tenant, subscription-ready SaaS platform built for high concurrency and effortless scaling.
+                Turn your software idea into a scalable SaaS platform with multi-tenant architecture, subscriptions, secure integrations, and production-ready infrastructure.
               </p>
             </div>
             <div>
@@ -493,7 +493,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">MVP Fast-Track</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Launch a market-ready Minimum Viable Product in weeks to test hypotheses, acquire users, and pitch investors efficiently.
+                Launch a focused MVP in weeks with the essential features needed to validate your idea, attract early users, and prepare for growth or investment.
               </p>
             </div>
             <div>
@@ -516,7 +516,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">Web Development</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Ultra-fast, responsive web portals, client dashboards, and interactive platforms engineered with Next.js and TypeScript.
+                Build fast, responsive web applications, client portals, dashboards, and scalable digital platforms using modern frontend and backend technologies.
               </p>
             </div>
             <div>
@@ -539,7 +539,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">Mobile Apps</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Native-performance iOS & Android mobile applications built with React Native / Flutter for optimal user experiences.
+                Develop high-performance iOS and Android mobile applications with modern cross-platform technologies and polished user experiences.
               </p>
             </div>
             <div>
@@ -561,7 +561,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">Business Automation</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Eliminate manual data entry and repetitive operations by integrating ERP, CRM, payment pipelines, and custom webhooks.
+                Automate repetitive business processes by connecting CRM, ERP, payments, APIs, databases, webhooks, and AI-powered workflows.
               </p>
             </div>
             <div>
@@ -584,7 +584,7 @@ if (!defined('LAUNCH_ALLOWED')) {
               </div>
               <h3 class="text-xl font-bold text-white mb-2">Modern E-commerce</h3>
               <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Headless e-commerce, custom checkout engines, inventory synchronizers, and international payment gateways.
+                Build scalable e-commerce platforms with custom storefronts, checkout systems, inventory integrations, and international payment solutions.
               </p>
             </div>
             <div>

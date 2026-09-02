@@ -767,8 +767,8 @@ try {
 
       await startLocalMedia();
       
-      // Connect to WebSocket via Socket.io using WebSockets transport directly to avoid upgrade/reconnect issues
-      socket = io(wsUrl, { transports: ['websocket'] });
+      // Connect to WebSocket via Socket.io using both polling and websocket transports for maximum production compatibility and robust failover
+      socket = io(wsUrl, { transports: ['polling', 'websocket'] });
 
       socket.on('connect', () => {
         document.getElementById('sig-status').innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Connected';
