@@ -433,9 +433,9 @@ if (!defined('LAUNCH_ALLOWED')) {
                 <span class="px-2 py-0.5 rounded bg-slate-800 border border-white/5">RAG</span>
                 <span class="px-2 py-0.5 rounded bg-slate-800 border border-white/5">AI Agents</span>
               </div>
-              <a href="#contact" class="text-xs font-semibold text-indigo-400 group-hover:text-cyan-300 flex items-center gap-1">
-                Explore AI Solutions →
-              </a>
+              <a href="/ai-development/" class="text-xs font-semibold text-indigo-400 group-hover:text-cyan-300 flex items-center gap-1">
+    Explore AI Development →
+</a>
             </div>
           </div>
 
