@@ -1161,7 +1161,27 @@ if (!defined('LAUNCH_ALLOWED')) {
               Explore USA Solutions →
             </a>
           </div>
-
+        <!-----Nepal---> 
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-indigo-500/50 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-3xl">🇳🇵</span>
+                <span class="market-clock text-xs font-mono text-cyan-400" data-tz="Asia/Kathmandu">NPT: --:--</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Nepal</h3>
+              <p class="text-xs text-indigo-300 font-mono mb-4">RABSS Technologies is a Nepal-based software development company building AI solutions, custom software, SaaS platforms, and MVPs for businesses and startups in Nepal and international markets.</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                <li class="flex items-center gap-2"><span>✓</span> High-Performance Web Apps</li>
+                <li class="flex items-center gap-2"><span>✓</span> Workflow Automation Pipelines</li>
+                <li class="flex items-center gap-2"><span>✓</span> AI System Integration</li>
+                <li class="flex items-center gap-2"><span>✓</span> Mobile Applications (iOS/Android)</li>
+              </ul>
+            </div>
+            <a href="#contact" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white text-xs font-semibold text-center transition-colors">
+              Explore Nepal Solutions →
+            </a>
+          </div>
           <!-- Canada -->
           <div class="p-6 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-indigo-500/50 transition-all flex flex-col justify-between">
             <div>
