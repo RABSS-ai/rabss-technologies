@@ -1128,10 +1128,12 @@ if (!defined('LAUNCH_ALLOWED')) {
             GLOBAL CLIENT FOCUS
           </div>
           <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-            BUILDING FOR GLOBAL BUSINESSES.
-          </h2>
+              AI & SOFTWARE DEVELOPMENT FOR GLOBAL BUSINESSES
+
+        </h2>
           <p class="mt-4 text-slate-400 text-lg">
-            Engineered for seamless remote collaboration, synchronized communication hours, and market-aligned technical standards.
+                RABSS Technologies provides custom AI development, software development, SaaS, MVP, and business automation solutions for startups and growing businesses in the USA, Canada, UAE, Qatar, and Nepal.
+
           </p>
         </div>
 
@@ -1146,7 +1148,7 @@ if (!defined('LAUNCH_ALLOWED')) {
                 <span class="market-clock text-xs font-mono text-cyan-400" data-tz="America/New_York">EST: --:--</span>
               </div>
               <h3 class="text-xl font-bold text-white mb-1">United States</h3>
-              <p class="text-xs text-indigo-300 font-mono mb-4">Software & AI for US Startups</p>
+              <p class="text-xs text-indigo-300 font-mono mb-4">AI & Custom Software Development for US Startups</p>
               
               <ul class="space-y-2 text-xs text-slate-300 mb-6">
                 <li class="flex items-center gap-2"><span>✓</span> AI Agents & LLM Workflows</li>
@@ -1168,7 +1170,7 @@ if (!defined('LAUNCH_ALLOWED')) {
                 <span class="market-clock text-xs font-mono text-cyan-400" data-tz="America/Toronto">EST: --:--</span>
               </div>
               <h3 class="text-xl font-bold text-white mb-1">Canada</h3>
-              <p class="text-xs text-indigo-300 font-mono mb-4">Digital Products for Canadian SMEs</p>
+              <p class="text-xs text-indigo-300 font-mono mb-4">AI, SaaS & Digital Product Development for Canadian Businesses</p>
               
               <ul class="space-y-2 text-xs text-slate-300 mb-6">
                 <li class="flex items-center gap-2"><span>✓</span> High-Performance Web Apps</li>
@@ -1190,7 +1192,7 @@ if (!defined('LAUNCH_ALLOWED')) {
                 <span class="market-clock text-xs font-mono text-cyan-400" data-tz="Asia/Dubai">GST: --:--</span>
               </div>
               <h3 class="text-xl font-bold text-white mb-1">United Arab Emirates</h3>
-              <p class="text-xs text-indigo-300 font-mono mb-4">AI & Digital Transformation</p>
+              <p class="text-xs text-indigo-300 font-mono mb-4">AI Automation & Custom Software Development in the UAE</p>
               
               <ul class="space-y-2 text-xs text-slate-300 mb-6">
                 <li class="flex items-center gap-2"><span>✓</span> Intelligent Customer Automation</li>
@@ -1212,7 +1214,7 @@ if (!defined('LAUNCH_ALLOWED')) {
                 <span class="market-clock text-xs font-mono text-cyan-400" data-tz="Asia/Qatar">AST: --:--</span>
               </div>
               <h3 class="text-xl font-bold text-white mb-1">Qatar</h3>
-              <p class="text-xs text-indigo-300 font-mono mb-4">Digital Solutions for Qatar Businesses</p>
+              <p class="text-xs text-indigo-300 font-mono mb-4">AI, Software & Digital Solutions for Qatar Businesses</p>
               
               <ul class="space-y-2 text-xs text-slate-300 mb-6">
                 <li class="flex items-center gap-2"><span>✓</span> SME Digitalization Platforms</li>
