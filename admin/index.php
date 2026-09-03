@@ -609,6 +609,75 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </div>
 
+  <!-- ==================== VIEW INQUIRY MODAL ==================== -->
+  <div id="view-inquiry-modal" class="hidden fixed inset-0 z-50 bg-dark-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-white/20 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeModal('view-inquiry-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">✕</button>
+      
+      <div class="flex items-center gap-4 mb-6">
+        <div id="inq-avatar" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-accent p-0.5 flex items-center justify-center font-bold text-lg text-white">
+          --
+        </div>
+        <div>
+          <h3 id="inq-name" class="text-xl font-bold text-white">--</h3>
+          <p id="inq-company" class="text-xs text-brand-accent font-mono">--</p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-3 gap-3 mb-6 font-mono text-xs">
+        <div class="p-3 rounded-xl bg-dark-950 border border-white/5">
+          <span class="text-slate-400 text-[10px]">BUDGET</span>
+          <p id="inq-budget" class="text-emerald-400 font-bold mt-0.5">--</p>
+        </div>
+        <div class="p-3 rounded-xl bg-dark-950 border border-white/5">
+          <span class="text-slate-400 text-[10px]">PROJECT TYPE</span>
+          <p id="inq-type" class="text-white font-bold mt-0.5">--</p>
+        </div>
+        <div class="p-3 rounded-xl bg-dark-950 border border-white/5">
+          <span class="text-slate-400 text-[10px]">MARKET</span>
+          <p id="inq-country" class="text-purple-300 font-bold mt-0.5">--</p>
+        </div>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="space-y-2 text-xs font-mono text-slate-300 p-4 rounded-xl bg-dark-950 border border-white/5 mb-6">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Email:</span>
+          <span id="inq-email" class="text-white">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">WhatsApp:</span>
+          <span id="inq-whatsapp" class="text-white">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Source:</span>
+          <span id="inq-source" class="text-cyan-400">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Received At:</span>
+          <span id="inq-date" class="text-slate-400">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Status:</span>
+          <span id="inq-status" class="text-white">--</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-6">
+        <p class="text-[11px] font-mono text-slate-400 mb-1">PROJECT DESCRIPTION / GOALS:</p>
+        <div id="inq-description" class="p-3 rounded-xl bg-dark-850 border border-white/5 text-xs text-slate-300 whitespace-pre-wrap max-h-48 overflow-y-auto">
+          --
+        </div>
+      </div>
+
+      <div class="flex gap-3" id="modal-action-buttons">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript -->
   <script src="assets/js/admin.js"></script>
 </body>

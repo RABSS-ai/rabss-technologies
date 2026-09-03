@@ -266,7 +266,8 @@ try {
                   </td>
                   <td class="p-4 text-slate-300 max-w-xs truncate" title="<?= htmlspecialchars($inq['description'] ?? '') ?>"><?= htmlspecialchars($inq['description'] ?? '—') ?></td>
                   <td class="p-4 font-mono text-slate-500"><?= htmlspecialchars($inq['created_at'] ?? 'Recently') ?></td>
-                  <td class="p-4 text-right space-x-1.5">
+                  <td class="p-4 text-right space-x-1.5 whitespace-nowrap">
+                    <button class="px-2 py-1 bg-dark-800 hover:bg-dark-700 text-slate-200 hover:text-white rounded font-mono text-[10px] font-bold" onclick="viewInquiryById(<?= $inq['id'] ?>)">View</button>
                     <?php if (($inq['status'] ?? 'New') === 'New'): ?>
                       <button class="px-2 py-1 bg-brand-600 hover:bg-brand-500 text-white rounded font-mono text-[10px] font-bold" onclick="promoteToLead(<?= $inq['id'] ?>)">Promote</button>
                     <?php else: ?>
@@ -283,8 +284,134 @@ try {
     </main>
   </div>
 
+  <!-- ==================== VIEW INQUIRY MODAL ==================== -->
+  <div id="view-inquiry-modal" class="hidden fixed inset-0 z-50 bg-dark-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-white/20 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeModal('view-inquiry-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">✕</button>
+      
+      <div class="flex items-center gap-4 mb-6">
+        <div id="inq-avatar" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-accent p-0.5 flex items-center justify-center font-bold text-lg text-white">
+          --
+        </div>
+        <div>
+          <h3 id="inq-name" class="text-xl font-bold text-white">--</h3>
+          <p id="inq-company" class="text-xs text-brand-accent font-mono">--</p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-3 gap-3 mb-6 font-mono text-xs">
+        <div class="p-3 rounded-xl bg-dark-950 border border-white/5">
+          <span class="text-slate-400 text-[10px]">BUDGET</span>
+          <p id="inq-budget" class="text-emerald-400 font-bold mt-0.5">--</p>
+        </div>
+        <div class="p-3 rounded-xl bg-dark-950 border border-white/5">
+          <span class="text-slate-400 text-[10px]">PROJECT TYPE</span>
+          <p id="inq-type" class="text-white font-bold mt-0.5">--</p>
+        </div>
+        <div class="p-3 rounded-xl bg-dark-950 border border-white/5">
+          <span class="text-slate-400 text-[10px]">MARKET</span>
+          <p id="inq-country" class="text-purple-300 font-bold mt-0.5">--</p>
+        </div>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="space-y-2 text-xs font-mono text-slate-300 p-4 rounded-xl bg-dark-950 border border-white/5 mb-6">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Email:</span>
+          <span id="inq-email" class="text-white">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">WhatsApp:</span>
+          <span id="inq-whatsapp" class="text-white">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Source:</span>
+          <span id="inq-source" class="text-cyan-400">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Received At:</span>
+          <span id="inq-date" class="text-slate-400">--</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Status:</span>
+          <span id="inq-status" class="text-white">--</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-6">
+        <p class="text-[11px] font-mono text-slate-400 mb-1">PROJECT DESCRIPTION / GOALS:</p>
+        <div id="inq-description" class="p-3 rounded-xl bg-dark-850 border border-white/5 text-xs text-slate-300 whitespace-pre-wrap max-h-48 overflow-y-auto">
+          --
+        </div>
+      </div>
+
+      <div class="flex gap-3" id="modal-action-buttons">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- Clocks and Logout script for Inquiry Box Page -->
   <script>
+    window.allInquiries = <?= json_encode($inquiries) ?>;
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    function viewInquiryById(id) {
+      if (!window.allInquiries) return;
+      const inq = window.allInquiries.find(item => item.id == id);
+      if (!inq) return;
+
+      document.getElementById('inq-avatar').textContent = (inq.name || 'IN').substring(0, 2).toUpperCase();
+      document.getElementById('inq-name').textContent = inq.name;
+      document.getElementById('inq-company').textContent = inq.company ? inq.company + ' • ' + (inq.country || '') : 'Independent Account';
+      document.getElementById('inq-budget').textContent = inq.budget || '—';
+      document.getElementById('inq-type').textContent = inq.project_type || '—';
+      document.getElementById('inq-country').textContent = inq.country || 'Other';
+      document.getElementById('inq-email').textContent = inq.email || '—';
+      document.getElementById('inq-whatsapp').textContent = inq.whatsapp || '—';
+      document.getElementById('inq-source').textContent = inq.source || 'Website Form';
+      document.getElementById('inq-date').textContent = inq.created_at || '—';
+      document.getElementById('inq-status').textContent = inq.status || 'New';
+      document.getElementById('inq-description').textContent = inq.description || 'No description provided.';
+
+      const isNew = (inq.status || 'New') === 'New';
+      const actionButtons = document.getElementById('modal-action-buttons');
+      if (actionButtons) {
+        if (isNew) {
+          actionButtons.innerHTML = `
+            <button class="flex-1 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl text-xs text-center transition-colors" onclick="closeModal('view-inquiry-modal'); promoteToLead(${inq.id});">
+              Promote to CRM Lead
+            </button>
+            <button class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs text-center transition-colors" onclick="closeModal('view-inquiry-modal'); deleteInquiry(${inq.id});">
+              Delete Inquiry
+            </button>
+          `;
+        } else {
+          actionButtons.innerHTML = `
+            <span class="flex-1 py-2.5 text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 font-bold rounded-xl text-xs text-center">
+              Promoted to CRM
+            </span>
+            <button class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs text-center transition-colors" onclick="closeModal('view-inquiry-modal'); deleteInquiry(${inq.id});">
+              Delete Inquiry
+            </button>
+          `;
+        }
+      }
+
+      document.getElementById('view-inquiry-modal').classList.remove('hidden');
+    }
+
+    document.getElementById('view-inquiry-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('view-inquiry-modal')) {
+        closeModal('view-inquiry-modal');
+      }
+    });
+
     function updateClocks() {
       const opts = { hour: '2-digit', minute: '2-digit', hour12: false };
       document.getElementById('clock-ny').textContent = new Intl.DateTimeFormat('en-US', { ...opts, timeZone: 'America/New_York' }).format(new Date());

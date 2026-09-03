@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCommandPalette();
   initAiAssistant();
   initLogout();
+  initInquiryModal();
 
   // Parse view from URL queries to handle multi-page navigation
   const urlParams = new URLSearchParams(window.location.search);
@@ -684,6 +685,7 @@ async function loadInquiries() {
   try {
     const res = await fetch('api/index.php?action=get_inquiries');
     const data = await res.json();
+    window.allInquiries = data.status === 'success' ? data.inquiries : [];
     const container = document.getElementById('inquiries-table-container');
     if (data.status === 'success' && container) {
       if (data.inquiries.length === 0) {
@@ -732,7 +734,8 @@ async function loadInquiries() {
             <td class="p-4 font-mono">${statusBadge}</td>
             <td class="p-4 text-slate-400 max-w-xs truncate" title="${inq.description || ''}">${inq.description || '—'}</td>
             <td class="p-4 font-mono text-slate-500">${inq.created_at || 'Recently'}</td>
-            <td class="p-4 text-right">
+            <td class="p-4 text-right space-x-1.5 whitespace-nowrap">
+              <button class="px-2 py-1 bg-dark-800 hover:bg-dark-700 text-slate-200 hover:text-white rounded font-mono text-[10px] font-bold" onclick="viewInquiryById(${inq.id})">View</button>
               ${promoteBtn}
               <button class="px-2 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded font-mono text-[10px] font-bold" onclick="deleteInquiry(${inq.id})">Delete</button>
             </td>
@@ -1024,6 +1027,81 @@ function initAiAssistant() {
       } catch (err) {
         logs.innerHTML += `<div class="p-3 rounded-2xl bg-rose-500/20 text-rose-300">Error connecting to AI OS endpoint.</div>`;
       }
+    });
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.add('hidden');
+}
+window.closeModal = closeModal;
+
+function viewInquiryById(id) {
+  if (!window.allInquiries) return;
+  const inq = window.allInquiries.find(item => item.id == id);
+  if (!inq) return;
+
+  const avatar = document.getElementById('inq-avatar');
+  const name = document.getElementById('inq-name');
+  const company = document.getElementById('inq-company');
+  const budget = document.getElementById('inq-budget');
+  const type = document.getElementById('inq-type');
+  const country = document.getElementById('inq-country');
+  const email = document.getElementById('inq-email');
+  const whatsapp = document.getElementById('inq-whatsapp');
+  const source = document.getElementById('inq-source');
+  const date = document.getElementById('inq-date');
+  const status = document.getElementById('inq-status');
+  const desc = document.getElementById('inq-description');
+
+  if (avatar) avatar.textContent = (inq.name || 'IN').substring(0, 2).toUpperCase();
+  if (name) name.textContent = inq.name;
+  if (company) company.textContent = inq.company ? inq.company + ' • ' + (inq.country || '') : 'Independent Account';
+  if (budget) budget.textContent = inq.budget || '—';
+  if (type) type.textContent = inq.project_type || '—';
+  if (country) country.textContent = inq.country || 'Other';
+  if (email) email.textContent = inq.email || '—';
+  if (whatsapp) whatsapp.textContent = inq.whatsapp || '—';
+  if (source) source.textContent = inq.source || 'Website Form';
+  if (date) date.textContent = inq.created_at || '—';
+  if (status) status.textContent = inq.status || 'New';
+  if (desc) desc.textContent = inq.description || 'No description provided.';
+
+  const isNew = (inq.status || 'New') === 'New';
+  const actionButtons = document.getElementById('modal-action-buttons');
+  if (actionButtons) {
+    if (isNew) {
+      actionButtons.innerHTML = `
+        <button class="flex-1 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl text-xs text-center transition-colors" onclick="closeModal('view-inquiry-modal'); promoteToLead(${inq.id});">
+          Promote to CRM Lead
+        </button>
+        <button class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs text-center transition-colors" onclick="closeModal('view-inquiry-modal'); deleteInquiry(${inq.id});">
+          Delete Inquiry
+        </button>
+      `;
+    } else {
+      actionButtons.innerHTML = `
+        <span class="flex-1 py-2.5 text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 font-bold rounded-xl text-xs text-center">
+          Promoted to CRM
+        </span>
+        <button class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs text-center transition-colors" onclick="closeModal('view-inquiry-modal'); deleteInquiry(${inq.id});">
+          Delete Inquiry
+        </button>
+      `;
+    }
+  }
+
+  const modal = document.getElementById('view-inquiry-modal');
+  if (modal) modal.classList.remove('hidden');
+}
+window.viewInquiryById = viewInquiryById;
+
+function initInquiryModal() {
+  const modal = document.getElementById('view-inquiry-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal('view-inquiry-modal');
     });
   }
 }
