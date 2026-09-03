@@ -264,7 +264,7 @@ try {
                       <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px]"><?= htmlspecialchars($inq['status']) ?></span>
                     <?php endif; ?>
                   </td>
-                  <td class="p-4 text-slate-300 max-w-xs truncate" title="<?= htmlspecialchars($inq['description'] ?? '') ?>"><?= htmlspecialchars($inq['description'] ?? '—') ?></td>
+                  <td class="p-4 text-slate-300 whitespace-pre-wrap min-w-[200px]"><?= htmlspecialchars($inq['description'] ?? '—') ?></td>
                   <td class="p-4 font-mono text-slate-500"><?= htmlspecialchars($inq['created_at'] ?? 'Recently') ?></td>
                   <td class="p-4 text-right space-x-1.5 whitespace-nowrap">
                     <button class="px-2 py-1 bg-dark-800 hover:bg-dark-700 text-slate-200 hover:text-white rounded font-mono text-[10px] font-bold" onclick="viewInquiryById(<?= $inq['id'] ?>)">View</button>
