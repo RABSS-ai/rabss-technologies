@@ -732,7 +732,11 @@ async function loadInquiries() {
             <td class="p-4 font-mono text-emerald-400">${inq.budget || '—'}</td>
             <td class="p-4 font-mono text-cyan-400">${inq.source || 'Website Form'}</td>
             <td class="p-4 font-mono">${statusBadge}</td>
-            <td class="p-4 text-slate-400 whitespace-pre-wrap min-w-[200px]">${inq.description || '—'}</td>
+                <td class="p-4 min-w-[200px]">
+                  <div class="max-h-24 overflow-y-auto whitespace-pre-wrap text-slate-400 pr-1">
+                    ${inq.description || '—'}
+                  </div>
+                </td>
             <td class="p-4 font-mono text-slate-500">${inq.created_at || 'Recently'}</td>
             <td class="p-4 text-right space-x-1.5 whitespace-nowrap">
               <button class="px-2 py-1 bg-dark-800 hover:bg-dark-700 text-slate-200 hover:text-white rounded font-mono text-[10px] font-bold" onclick="viewInquiryById(${inq.id})">View</button>
